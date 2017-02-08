@@ -1,4 +1,5 @@
-
+class Status
+	#todo
 class Mode
 	VideoMode = "0"
 	PhotoMode = "1"
