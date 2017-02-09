@@ -3,4 +3,4 @@ puts("powering on...")
 power_on()
 sleep 10
 puts("powering off...")
-power_off()
+#power_off()

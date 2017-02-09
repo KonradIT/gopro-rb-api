@@ -1,5 +1,39 @@
 class Status
-	#todo
+	Status="status"
+	Settings="setting"
+	def getStringStatus(status)
+		strings=Array["Video","Photo","MultiShot"]
+		return strings[status.to_i]
+	end
+	def getStatus(status, value)
+		puts case status
+			when "1"
+				puts case value
+					when "0"
+						return "no battery"
+					when "1"
+						return "has battery"
+				end
+		end
+	end
+	
+	class STATUS
+		Battery="1"
+		BatteryLevel="2"
+		Mode="43"
+		SubMode="44"
+		RecordElapsed="13"
+		CamName="30"
+		RemVideoTime="35"
+		RemPhotos="34"
+		BatchPhotosTaken="36"
+		VideosTaken="39"
+		PhotosTaken="38"
+		IsRecording="8"
+		SdCardInserted="33"
+	end
+	
+end
 class Mode
 	VideoMode = "0"
 	PhotoMode = "1"
@@ -32,9 +66,17 @@ end
 class Delete
 	ALL = "all"
 	LAST = "last"
+end
 class Locate
 	Start = "1"
 	Stop = "0"
+end
+class Reset
+	VideoPT="video"
+	PhotoPT="photo"
+	MultiShotPT="multishot"
+	CamReset="camera"
+end
 class Video
 	RESOLUTION="2"
 	class Resolution
