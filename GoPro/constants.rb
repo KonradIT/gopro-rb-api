@@ -122,6 +122,76 @@ class Video
 		ON="1"
 		OFF="0"
 	end
+	VIDEO_LOOP_TIME="6"
+	class VideoLoopTime
+		LoopMax="0"
+		Loop5Min="1"
+		Loop20Min="2"
+		Loop60Min="3"
+		Loop120Min="4"
+	end
+	VIDEO_PHOTO_INTERVAL="7"
+	class VideoPhotoInterval
+		Interval5Min="1"
+		Interval10Min="2"
+		Interval30Min="3"
+		Interval60Min="4"
+	end
+	PROTUNE_VIDEO="10"
+	class ProTune
+		ON="1"
+		OFF="0"
+	end
+	WHITE_BALANCE="11"
+	class WhiteBalance
+		WBAuto="0"
+		WB3000k="1"
+		WB4000k="5"
+		WB4800k="6"
+		WB5500k="2"
+		WB6000k="7"
+		WB6500k="3"
+		WBNative="4"
+	end
+	COLOR="12"
+	class Color
+		GOPRO="0"
+		Flat="1"
+	end
+	ISO_LIMIT="13"
+	class IsoLimit
+		ISO6400= "0"
+		ISO1600= "1"
+		ISO400= "2"
+		ISO3200= "3"
+		ISO800= "4"
+		ISO200= "7"
+		ISO100= "8"
+	end
+	ISO_MODE="74"
+	class IsoMode
+		Max="0"
+		Lock="1"
+	end
+	SHARPNESS="14"
+	class Sharpness
+		High="0"
+		Med="1"
+		Low="2"
+	end
+	EVCOMP="15"
+	class EvComp
+		P2= "0"
+		P1_5="1"
+		P1= "2"
+		P0_5="3"
+		Zero = "4"
+		M0_5="5"
+		M1= "6"
+		M1_5="7"
+		M2= "8"
+	end
+
 end
 	
 			
