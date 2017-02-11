@@ -193,6 +193,87 @@ class Video
 	end
 
 end
-	
-			
-		
+class Photo
+	RESOLUTION="17"
+	class Resolution
+		R12W="0"
+		R7W="1"
+		R7M="2"
+		R5W="3"
+		#HERO5 black only
+		R12L="10"
+		R12M="8"
+		R12N="9"
+	end
+	SPOT_METER="20"
+	class SpotMeter
+		ON="1"
+		OFF="0"
+	end
+	NIGHT_PHOTO_EXP="19"
+	class NightPhotoExp
+		ExpAuto="0"
+		Exp2Min="1"
+		Exp5Min="2"
+		Exp10Min="3"
+		Exp15Min="4"
+		Exp20Min="5"
+		Exp30Min="6"
+	end
+	CONTINUOUS_PHOTO_RATE="18"
+	class ContinuousPhotoRate
+		P3="0"
+		P5="1"
+		P10="2"
+	end
+	PROTUNE_PHOTO="21"
+        class ProTune
+                ON="1"
+                OFF="0"
+        end
+        WHITE_BALANCE="22"
+        class WhiteBalance                                                                                       WBAuto="0"
+                WB3000k="1"                                                                                      WB4000k="5"
+                WB4800k="6"
+                WB5500k="2"                                                                                      WB6000k="7"
+                WB6500k="3"
+                WBNative="4"
+        end
+        COLOR="23"
+        class Color
+                GOPRO="0"
+                Flat="1"
+        end
+	ISO_LIMIT="24"
+	class IsoLimit
+		ISO800="0"
+		ISO400="1"
+		ISO200="2"
+		ISO100="3"
+	end
+	ISO_MIN="75"
+	class IsoMin
+		ISO800="0"
+    		ISO400="1"
+    		ISO200="2"                                                
+    		ISO100="3"
+	end
+        SHARPNESS="14"
+        class Sharpness
+                High="0"
+                Med="1"
+                Low="2"
+        end
+	EVCOMP="26"
+	class EvComp
+                P2= "0"
+                P1_5="1"                                                                                         P1= "2"
+                P0_5="3"                                                                                         Zero = "4"
+                M0_5="5"
+                M1= "6"
+                M1_5="7"
+                M2= "8"
+        end
+end
+
+
