@@ -276,4 +276,72 @@ class Photo
         end
 end
 
+class Multishot
+	RESOLUTION="28"
+	class Resolution
+		R12W="0"
+		R7W="1"
+                R7M="2"
+		R5W="3"
+		#HERO5 black only
+		R12L="10"
+		R12M="8"
+		R12N="9"
+	end
+
+        SPOT_METER="33"
+	class SpotMeter
+		ON="1"
+		OFF="0"
+	end
+
+	NIGHT_LAPSE_EXP="31"
+	class NightLapseExp
+		ExpAuto="0"
+		Exp2Min="1"
+		Exp5Min="2"
+		Exp10Min="3"
+		Exp15Min="4"
+		Exp20Min="5"
+		Exp30Min="6"
+	end
+	NIGHT_LAPSE_INTERVAL="32"
+	class NightLapseInterval
+		IContinuous="0"
+		I4s="4"
+		I5s="5"
+		I10s="10"
+		I15s="15"
+		I20s="20"
+		I30s="30"
+		I1m="60"
+		I2m="120"
+		I5m="300"
+		I30m="1800"
+		I60m="3600"
+	end
+	TIMELAPSE_INTERVAL="30"
+	class TimeLapseInterval
+		IHalf1="0"
+		I1="1"
+		I2="2"
+		I5="5"
+		I10="10"
+		I30="30"
+		I60="60"
+	end
+	BURST_RATE="29"
+	class BurstRate
+		B3_1="0"
+		B5_1="1"
+		B10_1="2"
+		B10_2="3"
+		B10_3="4"
+		B30_1="5"
+		B30_2="6"
+		B30_3="7"
+		B30_6="8"
+	end
+end
+
 
