@@ -37,7 +37,7 @@ end
 class Mode
 	VideoMode = "0"
 	PhotoMode = "1"
-	MultiShotMode = "3"
+	MultiShotMode = "2"
 	class SubMode
 		class Video
 			Video = "0"
@@ -77,6 +77,54 @@ class Reset
 	MultiShotPT="multishot"
 	CamReset="camera"
 end
+
+class Setup
+	ORIENTATION="52"
+	class Orientation
+		Up="1"
+		Down="2"
+		Auto="0"
+	end
+	QUIK_CAPTURE="54"
+	class QuikCapture
+		ON="1"
+		OFF="2"
+	end
+	LED_BLINK="55"
+	class LedBlink
+		Led_OFF="0"
+		Led_2="1"
+		Led_4="2"
+	end
+	LED_BLINK_H5="92"
+	class LedBlinkH5
+		Led_OFF="0"
+		Led_ON="2"
+		Led_FrontOff="1"
+	end
+	BEEP="56"
+	class Beep
+		OFF="2"
+		SemiLoud="1"
+		Loud="0"
+	end
+	AUTO_OFF="59"
+	class AutoOff
+		Never="0"
+		A1Min="1"
+		A2Min="2"
+		A3Min="3"
+	end
+	GPS="83"
+	class MapLocate
+		ON="1"
+		OFF="0"
+	end
+	VOICE_CONTROL="86"
+	class VoiceControl
+		ON="1"
+		OFF="0"
+	end
 class Video
 	RESOLUTION="2"
 	class Resolution
@@ -110,8 +158,10 @@ class Video
 		Wide="0"
 		Medium="1"
 		Narrow="2"
+		SuperView="3"
 		Linear="4"
 	end
+	
 	LOW_LIGHT="5"
 	class LowLight
 		ON="1"
@@ -137,6 +187,21 @@ class Video
 		Interval30Min="3"
 		Interval60Min="4"
 	end
+	VIDEO_EIS="78"
+	class VideoEIS
+		ON="1"
+		OFF="0"
+	end
+	PROTUNE_AUDIO="79"
+	class ProtuneAudio
+		ON="1"
+		OFF="0"
+	end
+	AUDIO_MODE="80"
+	class AudioMode
+		Stereo="0"
+		Wind="1"
+		Auto="2"
 	PROTUNE_VIDEO="10"
 	class ProTune
 		ON="1"
@@ -226,24 +291,37 @@ class Photo
 		P5="1"
 		P10="2"
 	end
+	WDR_PHOTO="77"
+	class WDR
+		ON="1"
+		OFF="0"
+	end
+	RAW_PHOTO="82"
+	class RawPhoto
+		ON="1"
+		OFF="0"
+	end
 	PROTUNE_PHOTO="21"
-        class ProTune
-                ON="1"
-                OFF="0"
-        end
-        WHITE_BALANCE="22"
-        class WhiteBalance                                                                                       WBAuto="0"
-                WB3000k="1"                                                                                      WB4000k="5"
-                WB4800k="6"
-                WB5500k="2"                                                                                      WB6000k="7"
-                WB6500k="3"
-                WBNative="4"
-        end
-        COLOR="23"
-        class Color
-                GOPRO="0"
-                Flat="1"
-        end
+	class ProTune
+		ON="1"
+		OFF="0"
+	end
+	WHITE_BALANCE="22"
+	class WhiteBalance
+			WBAuto="0"
+			WB3000k="1"
+			WB4000k="5"
+			WB4800k="6"
+			WB5500k="2"
+			WB6000k="7"
+			WB6500k="3"
+			WBNative="4"
+  end
+	COLOR="23"
+  class Color
+		GOPRO="0"
+		Flat="1"
+  end
 	ISO_LIMIT="24"
 	class IsoLimit
 		ISO800="0"
@@ -254,26 +332,28 @@ class Photo
 	ISO_MIN="75"
 	class IsoMin
 		ISO800="0"
-    		ISO400="1"
-    		ISO200="2"                                                
-    		ISO100="3"
+		ISO400="1"
+		ISO200="2"
+		ISO100="3"
 	end
-        SHARPNESS="14"
-        class Sharpness
-                High="0"
-                Med="1"
-                Low="2"
-        end
+  SHARPNESS="25"
+	class Sharpness
+		High="0"
+		Med="1"
+		Low="2"
+  end
 	EVCOMP="26"
 	class EvComp
-                P2= "0"
-                P1_5="1"                                                                                         P1= "2"
-                P0_5="3"                                                                                         Zero = "4"
-                M0_5="5"
-                M1= "6"
-                M1_5="7"
-                M2= "8"
-        end
+		P2= "0"
+		P1_5="1"
+    P1= "2"
+		P0_5="3"
+		Zero = "4"
+		M0_5="5"
+		M1= "6"
+		M1_5="7"
+		M2= "8"
+	end
 end
 
 class Multishot
@@ -281,7 +361,7 @@ class Multishot
 	class Resolution
 		R12W="0"
 		R7W="1"
-                R7M="2"
+		R7M="2"
 		R5W="3"
 		#HERO5 black only
 		R12L="10"
@@ -289,7 +369,7 @@ class Multishot
 		R12N="9"
 	end
 
-        SPOT_METER="33"
+	SPOT_METER="33"
 	class SpotMeter
 		ON="1"
 		OFF="0"
@@ -342,6 +422,57 @@ class Multishot
 		B30_3="7"
 		B30_6="8"
 	end
+	PROTUNE_MULTISHOT="21"
+	class ProTune
+		ON="1"
+		OFF="0"
+	end
+	WHITE_BALANCE="35"
+	class WhiteBalance
+			WBAuto="0"
+			WB3000k="1"
+			WB4000k="5"
+			WB4800k="6"
+			WB5500k="2"
+			WB6000k="7"
+			WB6500k="3"
+			WBNative="4"
+  end
+	COLOR="36"
+  class Color
+		GOPRO="0"
+		Flat="1"
+  end
+	ISO_LIMIT="37"
+	class IsoLimit
+		ISO800="0"
+		ISO400="1"
+		ISO200="2"
+		ISO100="3"
+	end
+	ISO_MIN="76"
+	class IsoMin
+		ISO800="0"
+		ISO400="1"
+		ISO200="2"
+		ISO100="3"
+	end
+  SHARPNESS="38"
+	class Sharpness
+		High="0"
+		Med="1"
+		Low="2"
+  end
+	EVCOMP="39"
+	class EvComp
+		P2= "0"
+		P1_5="1"
+    P1= "2"
+		P0_5="3"
+		Zero = "4"
+		M0_5="5"
+		M1= "6"
+		M1_5="7"
+		M2= "8"
+	end
 end
-
-
