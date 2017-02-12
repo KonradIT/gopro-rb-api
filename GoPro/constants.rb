@@ -1,22 +1,6 @@
 class Status
 	Status="status"
-	Settings="setting"
-	def getStringStatus(status)
-		strings=Array["Video","Photo","MultiShot"]
-		return strings[status.to_i]
-	end
-	def getStatus(status, value)
-		puts case status
-			when "1"
-				puts case value
-					when "0"
-						return "no battery"
-					when "1"
-						return "has battery"
-				end
-		end
-	end
-	
+	Settings="settings"
 	class STATUS
 		Battery="1"
 		BatteryLevel="2"
@@ -34,6 +18,7 @@ class Status
 	end
 	
 end
+
 class Mode
 	VideoMode = "0"
 	PhotoMode = "1"
@@ -125,6 +110,7 @@ class Setup
 		ON="1"
 		OFF="0"
 	end
+end
 class Video
 	RESOLUTION="2"
 	class Resolution
@@ -202,6 +188,7 @@ class Video
 		Stereo="0"
 		Wind="1"
 		Auto="2"
+	end
 	PROTUNE_VIDEO="10"
 	class ProTune
 		ON="1"
