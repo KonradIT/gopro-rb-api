@@ -1,8 +1,10 @@
 require '../GoPro/GoPro'
 require '../GoPro/constants'
 
-status_raw()
-puts status(Status::Status, Status::STATUS::Mode)
-puts status(Status::Status, Status::STATUS::IsRecording)
-puts status(Status::Settings, Video::FRAME_RATE)
-puts status(Status::Settings, Photo::RESOLUTION)
+gpCamera = Camera.new
+puts gpCamera.status_raw()
+puts gpCamera.status(Status::Status, Status::STATUS::Mode)
+puts gpCamera.status(Status::Status, Status::STATUS::IsRecording)
+puts gpCamera.status(Status::Settings, Video::FRAME_RATE)
+puts gpCamera.status(Status::Settings, Photo::RESOLUTION)
+puts gpCamera.info_camera(Camera::Name)

@@ -18,7 +18,11 @@ class Status
 	end
 	
 end
-
+class Camera
+	Name="model_name"
+	Number="model_number"
+	Firmware="firmware_version"
+end
 class Mode
 	VideoMode = "0"
 	PhotoMode = "1"

@@ -23,6 +23,12 @@ require '../GoPro/GoPro'
 require '../GoPro/constants'
 ```
 
+###Imitialising:
+
+```ruby
+gpCamera = Camera.new
+```
+
 | Code | Explanation |
 |------|-------------|
 |     gpControlCommand(X,Y) | Sends a command to the camera, using GoPro constants |
@@ -32,6 +38,7 @@ require '../GoPro/constants'
 |     status(X,Y) | Returns the status, needs: X=Status::Status or Status::Settings - H=status id (Status/Setup/Video/Photo/MultiShot).|
 |     overview() | Prints a human-readable overview |
 |     delete() | Can be: delete(last) or delete(all) |
+|     delete_file(folder,file) | Deletes a specific file |
 |     hilight() | HiLights a moment in the video recording |
 |     power_on() | Powers the camera on. NOTE: run this to put your H4 Session into app mode first! |
 |     power_off() | Powers the camera off |
@@ -39,6 +46,8 @@ require '../GoPro/constants'
 |     ap_setting(ssid,pass) | Change SSID and Password of the camera. HERO5 not supported. |
 |     locate(param) | Makes the camera beep. locate(Locate::Start) for start and locate(Locate::Stop) for stop. |
 |     reset() | Reset camera (protune or flash factory setting) |
+|     get_media() | returns the last media taken URL |
+|     dl_media() | Downloads latest media taken |
 
 ###Examples:
 
@@ -50,20 +59,22 @@ require '../GoPro/constants'
 	
 	See [constants.rb](constants.rb) file for the status and settings available. For settings, you can use any Setup/Video/Photo/MultiShot variable.
 	```ruby
-	puts status(Status::Status, Status::STATUS::Mode) #returns current mode
-	puts status(Status::Status, Status::STATUS::isRecording) #returns recording status
-	puts status(Status::Settings, Video::FRAME_RATE) #returns frame rate
-	puts status(Status::Settings, Photo::RESOLUTION)
+	gpCamera = Camera.new
+	puts gpCamera.status(Status::Status, Status::STATUS::Mode) #returns current mode
+	puts gpCamera.status(Status::Status, Status::STATUS::isRecording) #returns recording status
+	puts gpCamera.status(Status::Settings, Video::FRAME_RATE) #returns frame rate
+	puts gpCamera.status(Status::Settings, Photo::RESOLUTION)
 	```
-	If you want to get the raw status: ```status_raw()```
+	If you want to get the raw status: ```gpCamera.status_raw()```
 	
 	
 - **Send a command:**
 	You can send a command to your camera wuth ```gpControlCommand```, this way you can change settings.
 	
 	```ruby
-	gpControlCommand(Multishot::BURST_RATE, Multishot::BurstRate::B5_1)
-	gpControlCommand(Setup::ORIENTATION,Setup::Orientation::Down)
+	gpCamera = Camera.new
+	gpCamera.gpControlCommand(Multishot::BURST_RATE, Multishot::BurstRate::B5_1)
+	gpCamera.gpControlCommand(Setup::ORIENTATION,Setup::Orientation::Down)
 	```
 	
 - **Shutter:**
@@ -71,8 +82,9 @@ require '../GoPro/constants'
 	You can start/stop a video or timelapse and take pictures.
 
 	```ruby
-	shutter(Shutter::ON) #takes a picture or starts a video
-	shutter(Shutter:OFF) #stops a video or timelapse
+	gpCamera = Camera.new
+	gpCamera.shutter(Shutter::ON) #takes a picture or starts a video
+	gpCamera.shutter(Shutter:OFF) #stops a video or timelapse
 	```
 
 - **Change Modes:**
@@ -86,8 +98,9 @@ require '../GoPro/constants'
 	- MultiShotMode: Burst, TimeLapse, NightLapse
 	 
 	```ruby
-	camera_mode(Mode::VideoMode, Mode::SubModes::Video::TimeLapseVideo)
-	camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single)
+	gpCamera = Camera.new
+	gpCamera.camera_mode(Mode::VideoMode, Mode::SubModes::Video::TimeLapseVideo)
+	gpCamera.camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single)
 	```
 	
 	

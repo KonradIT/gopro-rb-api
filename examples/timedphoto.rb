@@ -1,5 +1,6 @@
 require '../GoPro/GoPro'
 require '../GoPro/constants'
+gpCamera = Camera.new
 sleep 5
-camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single)
-shutter(Shutter::ON)
+gpCamera.camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single)
+gpCamera.shutter(Shutter::ON)

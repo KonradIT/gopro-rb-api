@@ -1,3 +1,3 @@
 require '../GoPro/GoPro'
-
-sync_time()
+gpCamera = Camera.new
+gpCamera.sync_time()
