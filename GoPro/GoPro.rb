@@ -36,6 +36,7 @@ class Camera
 		puts "videos left: ", status(Status::Status, Status::STATUS::RemVideoTime)
 		puts "pictures left: ", status(Status::Status, Status::STATUS::RemPhotos)
 		puts "camera SSID: ", status(Status::Status, Status::STATUS::CamName)
+		puts "Is Recording:", status(Status::Status, Status::STATUS::IsRecording)
 		puts "camera model: ", info_camera(Camera::Name)
 		puts "firmware version: ", info_camera(Camera::Firmware)
 	end
@@ -43,8 +44,14 @@ class Camera
 		response = open(GOPROCONTROL + 'command/shutter?p=' + value).read
 		puts response
 	end
-
-	def camera_mode(mode, submode)
+	def take_photo()
+		if status(Status::Status, Status::STATUS::IsRecording) == "1"
+			shutter(Shutter::OFF)
+		end
+		camera_mode(Mode::PhotoMode)
+		shutter(Shutter::ON)
+	end
+	def camera_mode(mode, submode="0")
 		response = open(GOPROCONTROL + 'command/sub_mode?mode=' + mode + '&sub_mode=' + submode).read
 		puts response
 	end
@@ -163,5 +170,19 @@ class Camera
 		end
 		}
 
+	end
+
+	def livestream(option)
+		puts case option
+			when "start"
+				response = open(GOPROCONTROL + 'execute?p1=gpStream&a1=proto_v2&c1=start').read
+				puts response
+			when "stop"
+				response = open(GOPROCONTROL + 'execute?p1=gpStream&a1=proto_v2&c1=stop').read
+				puts response
+			when "restart"
+				response = open(GOPROCONTROL + 'execute?p1=gpStream&a1=proto_v2&c1=restart').read
+				puts response
+		end
 	end
 end

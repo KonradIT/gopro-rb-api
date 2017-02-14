@@ -4,6 +4,10 @@ class Status
 	class STATUS
 		Battery="1"
 		BatteryLevel="2"
+		IsBatteryBacPac="3"
+		BatteryBacPacLevel="4"
+		QuikCapture="9"
+		IsBusy="8"
 		Mode="43"
 		SubMode="44"
 		RecordElapsed="13"
@@ -14,9 +18,14 @@ class Status
 		VideosTaken="39"
 		PhotosTaken="38"
 		IsRecording="8"
+		RemainingSpace="54"
+		TotalHiLights="58"
+		LastHiLight="59"
 		SdCardInserted="33"
+		IsConnected="31"
+		GPS="68"
+		BattPercent="70"
 	end
-	
 end
 class Camera
 	Name="model_name"
@@ -112,6 +121,12 @@ class Setup
 	VOICE_CONTROL="86"
 	class VoiceControl
 		ON="1"
+		OFF="0"
+	end
+	WIFI="63"
+	class Wifi
+		Remote="2"
+		SmartRemote="3"
 		OFF="0"
 	end
 end
@@ -466,4 +481,9 @@ class Multishot
 		M1_5="7"
 		M2= "8"
 	end
+end
+class Livestream
+	RESTART = "restart"
+	START = "start"
+	STOP = "stop"
 end

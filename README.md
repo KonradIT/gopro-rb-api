@@ -32,8 +32,8 @@ gpCamera = Camera.new
 | Code | Explanation |
 |------|-------------|
 |     gpControlCommand(X,Y) | Sends a command to the camera, using GoPro constants |
-|     shutter(param) | Starts a video or takes a picture, param can be Shutter::ON or Shutter:OFF |
-|     camera_mode(X,Y) | Changes the mode, X=Mode, Y=Submode. Example: camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single) |
+|     shutter(param) | Starts a video or takes a picture, param can be Shutter::ON or Shutter::OFF |
+|     camera_mode(X,Y) | Changes the mode, X=Mode, Y=Submode (default is 0). Example: camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single) |
 |     status_raw() | Returns the status dump of the camera in json |
 |     status(X,Y) | Returns the status, needs: X=Status::Status or Status::Settings - H=status id (Status/Setup/Video/Photo/MultiShot).|
 |     overview() | Prints a human-readable overview |
@@ -48,6 +48,7 @@ gpCamera = Camera.new
 |     reset() | Reset camera (protune or flash factory setting) |
 |     get_media() | returns the last media taken URL |
 |     dl_media() | Downloads latest media taken |
+|     livestream(param) | Starts, restarts or stops the livefeed via UDP. |
 
 ###Examples:
 
@@ -96,12 +97,26 @@ gpCamera = Camera.new
 	- VideoMode: Video, Looping, TimeLapseVideo, VideoPhoto
 	- PhotoMode: Single, Continuous, Night
 	- MultiShotMode: Burst, TimeLapse, NightLapse
+	
+	**NOTE**: You can leave the submode empty and it will default to 0 (first submode in the mode).
 	 
 	```ruby
 	gpCamera = Camera.new
-	gpCamera.camera_mode(Mode::VideoMode, Mode::SubModes::Video::TimeLapseVideo)
-	gpCamera.camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single)
+	gpCamera.camera_mode(Mode::VideoMode, Mode::SubModes::Video::TimeLapseVideo) #includes submode
+	gpCamera.camera_mode(Mode::PhotoMode)
 	```
 	
+- **Get Last Media**
+
+	You can get the last media's URL and also download it to the working directory. Also you can get a list of all the files in the SD card.
 	
+	```ruby
+	gpCamera = Camera.new
+	puts gpCamera.get_media() #outputs last media url
+	gpCamera.dl_media() #downloads last media
+	puts gpCamera.list_media() #lists camera media
+	```
+	
+**For more examples see the examples folder**
+
 This API is based on [goprowifihack](http://github.com/konradit/goprowifihack) - GoPro API docs.
