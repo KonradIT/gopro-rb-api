@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'socket'
 require 'json'
+require_relative 'constants'
 GPIP = "10.5.5.9"
 GOPROCONTROL = "http://10.5.5.9/gp/gpControl/"
 GOPROMEDIA = "http://10.5.5.9/gp/gpMediaList/"

@@ -36,7 +36,7 @@ gem install goprocam.gemspec
 First of all:
 
 ```ruby
-require '../lib/GoPro'
+require '../lib/goprocam'
 require '../lib/constants'
 ```
 

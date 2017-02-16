@@ -1,4 +1,4 @@
-require '../lib/GoPro'
+require '../lib/goprocam'
 require '../lib/constants'
 
 ###################################

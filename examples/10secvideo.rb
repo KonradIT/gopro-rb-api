@@ -1,4 +1,4 @@
-require '../lib/GoPro'
+require '../lib/goprocam'
 require '../lib/constants'
 gpCamera = Camera.new
 gpCamera.camera_mode(Mode::VideoMode, Mode::SubMode::Video::Video)
