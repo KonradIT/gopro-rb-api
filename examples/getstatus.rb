@@ -1,5 +1,5 @@
-require '../GoPro/GoPro'
-require '../GoPro/constants'
+require '../lib/GoPro'
+require '../lib/constants'
 
 gpCamera = Camera.new
 puts gpCamera.status_raw()

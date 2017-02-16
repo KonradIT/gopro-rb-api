@@ -1,4 +1,4 @@
-require '../GoPro/GoPro'
+require '../lib/GoPro'
 gpCamera = Camera.new
 puts("powering on...")
 gpCamera.power_on()

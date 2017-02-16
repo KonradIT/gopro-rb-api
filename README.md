@@ -2,6 +2,23 @@
 
 A unofficial Ruby API wrapper for controlling GoPro HERO cameras over WiFi.
 
+[![Gem Version](https://badge.fury.io/rb/goprocam.svg)](https://badge.fury.io/rb/goprocam)
+
+###Installation:
+
+**From source**
+```
+git clone http://github.com/konradit/gopro-rb-api
+cd gopro-rb-api
+gem build goprocam.gemspec
+gem install goprocam.gemspec
+```
+
+**From RubyGems**
+
+    gem install goprocam
+    
+
 ###Supported cameras:
 
 - HERO4 Black, Silver
@@ -19,8 +36,8 @@ A unofficial Ruby API wrapper for controlling GoPro HERO cameras over WiFi.
 First of all:
 
 ```ruby
-require '../GoPro/GoPro'
-require '../GoPro/constants'
+require '../lib/GoPro'
+require '../lib/constants'
 ```
 
 ###Imitialising:
