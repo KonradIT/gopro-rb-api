@@ -8,7 +8,7 @@ GOPROMEDIA = "http://10.5.5.9/gp/gpMediaList/"
 class Camera
 	def initialize()
 		#check if camera is ON:
-		power_on()
+		#power_on()
 		#check if camera status is connected
 		while status(Status::Status, Status::STATUS::IsConnected) == 0
 			status(Status::Status, Status::STATUS::IsConnected)
@@ -223,21 +223,9 @@ class Camera
 		UDPSock.send(data, 0, addr[0], addr[1])
 	end
 
-	def sync_time()
-		datestr_year=Time.new.year.to_s.reverse[0...2].reverse.to_i.to_s(16)
-		datestr_month=Time.new.month.to_s(16)
-		datestr_day=Time.new.day.to_s(16)
-		datestr_hour=Time.new.hour.to_s(16)
-		datestr_min=Time.new.min.to_s(16)
-		datestr_sec=Time.new.sec.to_s(16)
-		datestr="%"+datestr_year+"%"+datestr_month+"%"+datestr_day+"%"+datestr_hour+"%"+datestr_min+"%"+datestr_sec
-		response = open(GOPROCONTROL + 'command/setup/date_time?p=' + datestr).read
-		puts response
-	end
 	def ap_setting(ssid,pass)
 		response = open(GOPROCONTROL + 'command/wireless/ap/ssid?ssid=' + ssid + "&pw=" + passwd).read
 		puts response
-		end
 	end
 
 	def reset(option)
@@ -302,6 +290,17 @@ class Camera
 			when "size"
 				return size
 		end
+	end
+	def sync_time()
+		datestr_year=Time.new.year.to_s.reverse[0...2].reverse.to_i.to_s(16)
+		datestr_month=Time.new.month.to_s(16)
+		datestr_day=Time.new.day.to_s(16)
+		datestr_hour=Time.new.hour.to_s(16)
+		datestr_min=Time.new.min.to_s(16)
+		datestr_sec=Time.new.sec.to_s(16)
+		datestr="%"+datestr_year+"%"+datestr_month+"%"+datestr_day+"%"+datestr_hour+"%"+datestr_min+"%"+datestr_sec
+		response = open(GOPROCONTROL + 'command/setup/date_time?p=' + datestr).read
+		puts response
 	end
 	def dl_media()
 		folder=""
