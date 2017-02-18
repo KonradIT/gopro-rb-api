@@ -40,6 +40,12 @@ require '../lib/goprocam'
 require '../lib/constants'
 ```
 
+or
+
+```ruby
+require 'goprocam'
+```
+
 ###Imitialising:
 
 ```ruby
@@ -49,10 +55,11 @@ gpCamera = Camera.new
 | Code | Explanation |
 |------|-------------|
 |     gpControlCommand(X,Y) | Sends a command to the camera, using GoPro constants |
-|     shutter(param) | Starts a video or takes a picture, param can be Shutter::ON or Shutter::OFF |
+|     shutter(param) | Starts a video or takes a picture<br>param=Shutter::ON or Shutter::OFF |
 |     camera_mode(X,Y) | Changes the mode, X=Mode, Y=Submode (default is 0). Example: camera_mode(Mode::PhotoMode, Mode::SubMode::Photo::Single) |
 |     status_raw() | Returns the status dump of the camera in json |
-|     status(X,Y) | Returns the status, needs: X=Status::Status or Status::Settings - H=status id (Status/Setup/Video/Photo/MultiShot).|
+|     status(X,Y) | Returns the status. <br><ul><li>X = Status::Status or Status::Settings</li><li>Y = status id (Status/Setup/Video/Photo/MultiShot).</li><li>NOTE: This returns the status of the camera as an integer. To get the value in a human form use parse_value() </li></ul>|
+|     parse_value(option, param) | Parse the raw value of status and print a human value.<br><ul><li>option="mode","sub_mode","recording","battery","video_res","video_fr","rem_space"</li><li>param = Status ID</ul>
 |     overview() | Prints a human-readable overview |
 |     delete() | Can be: delete(last) or delete(all) |
 |     delete_file(folder,file) | Deletes a specific file |
@@ -65,7 +72,10 @@ gpCamera = Camera.new
 |     reset() | Reset camera (protune or flash factory setting) |
 |     get_media() | returns the last media taken URL |
 |     dl_media() | Downloads latest media taken |
+|     list_media() | Outputs a prettified JSON media list |
+|     get_media_info(option) | Gets the media info<br>option=file/folder/size |
 |     livestream(param) | Starts, restarts or stops the livefeed via UDP. |
+
 
 ###Examples:
 
@@ -79,11 +89,39 @@ gpCamera = Camera.new
 	```ruby
 	gpCamera = Camera.new
 	puts gpCamera.status(Status::Status, Status::STATUS::Mode) #returns current mode
+	>0
 	puts gpCamera.status(Status::Status, Status::STATUS::isRecording) #returns recording status
+	>1
 	puts gpCamera.status(Status::Settings, Video::FRAME_RATE) #returns frame rate
+	>3
 	puts gpCamera.status(Status::Settings, Photo::RESOLUTION)
+	>9
+	puts status(Status::Status, Status::STATUS::RemPhotos).to_s #some values do not need to be processed
+	>1998
+	puts status(Status::Status, Status::STATUS::CamName) #This returns the camera SSID
+	>KonradHERO4Black2
 	```
-	If you want to get the raw status: ```gpCamera.status_raw()```
+	
+	NOTE: This status returns an integer which can be later matched with a human description. That is:
+	
+	```ruby
+	puts gpCamera.parse_value("mode",status(Status::Status, Status::STATUS::Mode))
+	>Video
+	puts gpCamera.parse_value("sub_mode",status(Status::Status, Status::STATUS::SubMode))
+	>Looping
+	puts gpCamera.parse_value("video_res",status(Status::Settings, Video::RESOLUTION))
+	>1080p
+	puts gpCamera.parse_value("video_fr",status(Status::Settings, Video::FRAME_RATE))
+	>60
+	puts gpCamera.parse_value("video_left",status(Status::Status, Status::STATUS::RemVideoTime))
+	>01:14:23
+	puts gpCamera.parse_value("battery",status(Status::Status, Status::STATUS::BatteryLevel))
+	>Full
+	puts gpCamera.parse_value("recording",status(Status::Status, Status::STATUS::IsRecording))
+	>Recording
+	```
+	
+	If you want to get the raw status dump: ```gpCamera.status_raw()```
 	
 	
 - **Send a command:**
