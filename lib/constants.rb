@@ -31,6 +31,9 @@ class Camera
 	Name="model_name"
 	Number="model_number"
 	Firmware="firmware_version"
+	SSID="ap_ssid"
+	MacAddress="ap_mac"
+	SerialNumber="serial_number"
 end
 class Mode
 	VideoMode = "0"

@@ -167,7 +167,9 @@ class Camera
 		puts "Is Recording:", "    " + parse_value("recording",status(Status::Status, Status::STATUS::IsRecording))
 		puts "Clients connected: ", "    " + status(Status::Status, Status::STATUS::IsConnected).to_s
 		puts "camera model: ", "    " + info_camera(Camera::Name)
+		puts "camera ssid name: ", "    " + info_camera(Camera::SSID)
 		puts "firmware version: ", "    " + info_camera(Camera::Firmware)
+		puts "serial number: ", "    " + info_camera(Camera::SerialNumber)
 	end
 	def shutter(value)
 		response = open(GOPROCONTROL + 'command/shutter?p=' + value).read

@@ -46,7 +46,7 @@ or
 require 'goprocam'
 ```
 
-###Imitialising:
+###Initialising:
 
 ```ruby
 gpCamera = Camera.new
@@ -61,6 +61,7 @@ gpCamera = Camera.new
 |     status(X,Y) | Returns the status. <br><ul><li>X = Status::Status or Status::Settings</li><li>Y = status id (Status/Setup/Video/Photo/MultiShot).</li><li>NOTE: This returns the status of the camera as an integer. To get the value in a human form use parse_value() </li></ul>|
 |     parse_value(option, param) | Parse the raw value of status and print a human value.<br><ul><li>option="mode","sub_mode","recording","battery","video_res","video_fr","rem_space"</li><li>param = Status ID</ul>
 |     overview() | Prints a human-readable overview |
+|     info_camera(option) | Returns camera information<br>option = Name/Number/Firmware/SSID/MacAddress/SerialNumber
 |     delete() | Can be: delete(last) or delete(all) |
 |     delete_file(folder,file) | Deletes a specific file |
 |     hilight() | HiLights a moment in the video recording |
@@ -90,7 +91,7 @@ gpCamera = Camera.new
 	gpCamera = Camera.new
 	puts gpCamera.status(Status::Status, Status::STATUS::Mode) #returns current mode
 	>0
-	puts gpCamera.status(Status::Status, Status::STATUS::isRecording) #returns recording status
+	puts gpCamera.status(Status::Status, Status::STATUS::IsRecording) #returns recording status
 	>1
 	puts gpCamera.status(Status::Settings, Video::FRAME_RATE) #returns frame rate
 	>3
@@ -140,7 +141,7 @@ gpCamera = Camera.new
 	```ruby
 	gpCamera = Camera.new
 	gpCamera.shutter(Shutter::ON) #takes a picture or starts a video
-	gpCamera.shutter(Shutter:OFF) #stops a video or timelapse
+	gpCamera.shutter(Shutter::OFF) #stops a video or timelapse
 	```
 
 - **Change Modes:**
