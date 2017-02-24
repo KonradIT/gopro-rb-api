@@ -340,3 +340,4 @@ class Camera
 		end
 	end
 end
+end
