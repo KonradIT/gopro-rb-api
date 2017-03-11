@@ -211,19 +211,7 @@ class Camera
 		response = open(GOPROCONTROL + 'command/system/sleep').read
 		puts response
 	end
-	UDPSock = UDPSocket.new
-	def power_on()
-		begin
-		addr = ['<broadcast>', 9]
-
-		UDPSock.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
-		data = "\xFF\xFF\xFF\xFF\xFF\xFF"
-		arr = "AA:BB:CC:DD:EE:FF" #actually works, replace if needed.
-		16.times do |i|
-		 data<< arr[0].hex.chr+arr[1].hex.chr+arr[2].hex.chr+arr[3].hex.chr+arr[4].hex.chr+arr[5].hex.chr
-		end
-		UDPSock.send(data, 0, addr[0], addr[1])
-	end
+	
 
 	def ap_setting(ssid,pass)
 		response = open(GOPROCONTROL + 'command/wireless/ap/ssid?ssid=' + ssid + "&pw=" + passwd).read
@@ -339,5 +327,4 @@ class Camera
 				puts response
 		end
 	end
-end
 end
