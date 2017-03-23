@@ -4,7 +4,7 @@ A unofficial Ruby API wrapper for controlling GoPro HERO cameras over WiFi.
 
 [![Gem Version](https://badge.fury.io/rb/goprocam.svg)](https://badge.fury.io/rb/goprocam)
 
-###Installation:
+### Installation:
 
 **From source**
 ```
@@ -19,19 +19,19 @@ gem install goprocam.gemspec
     gem install goprocam
     
 
-###Supported cameras:
+### Supported cameras:
 
 - HERO4 Black, Silver
 - HERO4 Session
 - HERO+ / HERO+ LCD
 - HERO5 Black, Session
 
-####Planned:
+#### Planned:
 
 - HERO3/3+
 
 
-###Usage:
+### Usage:
 
 First of all:
 
@@ -46,7 +46,7 @@ or
 require 'goprocam'
 ```
 
-###Initialising:
+### Initialising:
 
 ```ruby
 gpCamera = Camera.new
@@ -78,7 +78,7 @@ gpCamera = Camera.new
 |     livestream(param) | Starts, restarts or stops the livefeed via UDP. |
 
 
-###Examples:
+### Examples:
 
 
 - **Get Status:**

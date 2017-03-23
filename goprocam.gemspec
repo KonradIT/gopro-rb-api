@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'goprocam'
-  s.version     = '1.2.1'
-  s.date        = '2017-02-25'
+  s.version     = '1.2.2'
+  s.date        = '2017-03-11'
   s.summary     = "Interface for your WiFi GoPro camera."
   s.description = "Control and view status from your GoPro HERO4/HERO5 camera via WiFi."
   s.authors     = ["Konrad Iturbe"]
