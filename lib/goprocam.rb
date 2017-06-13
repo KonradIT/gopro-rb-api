@@ -14,11 +14,14 @@ class Camera
 			status(Status::Status, Status::STATUS::IsConnected)
 		end
   end
-	def gpControlCommand(param,value)
+	def gpControlSet(param,value)
 		response = open(GOPROCONTROL + 'setting/' + param + '/' + value).read
 		puts response
 	end
-
+	def gpControlCommand(param)
+		response = open(GOPROCONTROL + 'command/' + param).read
+		puts response
+	end
 	def status_raw()
 		response = open(GOPROCONTROL + 'status').read
 		puts response
@@ -172,7 +175,7 @@ class Camera
 		puts "serial number: ", "    " + info_camera(Camera::SerialNumber)
 	end
 	def shutter(value)
-		response = open(GOPROCONTROL + 'command/shutter?p=' + value).read
+		response = gpControlCommand('shutter?p=' + value)
 		puts response
 	end
 	def take_photo()
@@ -183,38 +186,38 @@ class Camera
 		shutter(Shutter::ON)
 	end
 	def camera_mode(mode, submode="0")
-		response = open(GOPROCONTROL + 'command/sub_mode?mode=' + mode + '&sub_mode=' + submode).read
+		response = gpControlCommand('sub_mode?mode=' + mode + '&sub_mode=' + submode)
 		puts response
 	end
 
 	def delete(option)
-		response = open(GOPROCONTROL + 'command/storage/delete/' + option).read
+		response = gpControlCommand('storage/delete/' + option)
 		puts response
 	end
 
 	def delete_file(folder,file)
-		response = open(GOPROCONTROL + 'command/storage/delete?p=' + folder + "/" + file).read
+		response = gpControlCommand('storage/delete?p=' + folder + "/" + file)
 		puts response
 	end
 
 	def locate(param)
-		response = open(GOPROCONTROL + 'command/system/locate?p=' + param).read
+		response = gpControlCommand('system/locate?p=' + param)
 		puts response
 	end
 
 	def hilight()
-		response = open(GOPROCONTROL + 'command/storage/tag_moment').read
+		response = gpControlCommand('storage/tag_moment')
 		puts response
 	end
 
 	def power_off()
-		response = open(GOPROCONTROL + 'command/system/sleep').read
+		response = gpControlCommand('system/sleep')
 		puts response
 	end
 	
 
 	def ap_setting(ssid,pass)
-		response = open(GOPROCONTROL + 'command/wireless/ap/ssid?ssid=' + ssid + "&pw=" + passwd).read
+		response = gpControlCommand('wireless/ap/ssid?ssid=' + ssid + "&pw=" + passwd)
 		puts response
 	end
 
@@ -223,18 +226,18 @@ class Camera
 		puts case option
 			when Reset::VideoPT
 				#reset video PT
-				response = open(GOPROCONTROL + 'command/video/protune/reset').read
+				response = gpControlCommand('video/protune/reset')
 				puts response
 			when Reset::PhotoPT
 				#reset photo PT
-				response = open(GOPROCONTROL + 'command/photo/protune/reset').read
+				response = gpControlCommand('photo/protune/reset')
 				puts response
 			when Reset::MultiShotPT
 				#reset Ms PT
-				response = open(GOPROCONTROL + 'command/multi_shot/protune/reset').read
+				response = gpControlCommand('multi_shot/protune/reset')
 				puts response
 			when Reset::CamReset
-				response = open(GOPROCONTROL + 'command/system/factory/reset').read
+				response = gpControlCommand('system/factory/reset')
 				puts response
 		end
 	end
@@ -289,7 +292,7 @@ class Camera
 		datestr_min=Time.new.min.to_s(16)
 		datestr_sec=Time.new.sec.to_s(16)
 		datestr="%"+datestr_year+"%"+datestr_month+"%"+datestr_day+"%"+datestr_hour+"%"+datestr_min+"%"+datestr_sec
-		response = open(GOPROCONTROL + 'command/setup/date_time?p=' + datestr).read
+		response = gpControlCommand('setup/date_time?p=' + datestr)
 		puts response
 	end
 	def dl_media()
@@ -328,3 +331,4 @@ class Camera
 		end
 	end
 end
+
